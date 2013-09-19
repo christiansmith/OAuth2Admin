@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OAuth2Server Administration">
+    <meta name="author" content="Christian Smith">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>OAuth2Server Administration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body ng-app="OAuth2Admin">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">OAuth2Server</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="tabs-left">
+            <ul class="nav nav-tabs">
+              <li ng-class="{active: $state.includes('dashboard')}">
+                <a ui-sref="dashboard">Dashboard</a>
+              </li>
+              <li ng-class="{active: $state.includes('users')}">
+                <a ui-sref="users">Users</a>
+              </li>
+              <li ng-class="{active: $state.includes('clients')}">
+                <a ui-sref="clients">Clients</a>
+              </li>
+              <li ng-class="{active: $state.includes('resources')}">
+                <a ui-sref="resources">Resources</a>
+              </li>
+              <li ng-class="{active: $state.includes('logs')}">
+                <a ui-sref="logs">Logs</a>
+              </li>
+              <li ng-class="{active: $state.includes('settings')}">
+                <a ui-sref="settings">Settings</a>
+              </li>              
+            </ul>          
+          </div>
+  
+        </div>
+        <div class="col-md-10">
+          <div ui-view></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Application dependencies -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/users.js"></script>
+    <script src="scripts/controllers/clients.js"></script>
+    <script src="scripts/controllers/resources.js"></script>
+    <script src="scripts/controllers/logs.js"></script>
+    <script src="scripts/services/base64.js"></script>
+    <script src="scripts/services/request.js"></script>
+    <script src="scripts/services/user.js"></script>
+    <script src="scripts/services/client.js"></script>
+    <script src="scripts/services/resource.js"></script>
+    <script src="scripts/filters/truncate.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>

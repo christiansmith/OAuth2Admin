@@ -1,0 +1,20 @@
+<h1>Clients</h1>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Created</th>
+    <th>Modified</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="client in clients">
+      <td>{{client._id | truncate}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.type}}</td>
+      <td>{{client.created | date:'mediumDate'}}</td>
+      <td>{{client.modified | date: 'mediumDate'}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+<h1>Resources</h1>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <th>ID</th>
+    <th>URI</th>
+    <th>Scope</th>
+    <th>Created</th>
+    <th>Modified</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="resource in resources">
+      <td>{{resource._id | truncate}}</td>
+      <td>{{resource.uri}}</td>
+      <td>{{resource.scope}}</td>
+      <td>{{resource.created | date:'mediumDate'}}</td>
+      <td>{{resource.modified | date: 'mediumDate'}}</td>
+    </tr>
+  </tbody>
+</table>
