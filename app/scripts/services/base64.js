@@ -4,7 +4,7 @@
  * http://wemadeyoulook.at/en/blog/implementing-basic-http-authentication-http-requests-angular/
  */
 
-angular.module('OAuth2Admin')
+angular.module('app.services', [])
   .factory('Base64', function() {
     var keyStr = 'ABCDEFGHIJKLMNOP' +
                  'QRSTUVWXYZabcdef' +

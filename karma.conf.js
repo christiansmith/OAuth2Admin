@@ -9,10 +9,11 @@ files = [
   JASMINE_ADAPTER,
   'app/bower_components/angular/angular.js',
   'app/bower_components/angular-mocks/angular-mocks.js',
-  'app/scripts/*.js',
+  'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+  //'app/scripts/*.js',
   'app/scripts/**/*.js',
   'test/mock/**/*.js',
-  'test/spec/**/*.js'
+  'test/spec/**/*.coffee'
 ];
 
 // list of files to exclude
@@ -50,6 +51,10 @@ browsers = ['Chrome'];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;
+
+preprocessors = {
+  '**/*.coffee': 'coffee'
+};
 
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit
