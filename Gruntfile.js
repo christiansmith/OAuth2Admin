@@ -221,15 +221,15 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
-          /*removeCommentsFromCDATA: true,
+          //removeCommentsFromCDATA: true,
           // https://github.com/yeoman/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
+          collapseWhitespace: true,
+          //collapseBooleanAttributes: true,
+          //removeAttributeQuotes: true,
+          //removeRedundantAttributes: true,
+          //useShortDoctype: true,
+          //removeEmptyAttributes: true,
+          //removeOptionalTags: true
         },
         files: [{
           expand: true,
@@ -250,9 +250,14 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*',
+            'bower_components/bootstrap/dist/css/bootstrap.css',
+            'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+            'bower_components/jquery/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-ui-router/release/angular-ui-router.js',
+            'scripts/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'styles/**/*'
           ]
         }, {
           expand: true,
@@ -315,6 +320,59 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/scripts/scripts.js'
           ]
         }
+      }
+    },
+    s3: {
+      options: {
+        bucket: 'oauth2admin-dev'
+      },
+      dev: {
+        upload: [
+          { 
+            src: 'dist/index.html', 
+            dest: 'index.html' 
+          },
+          { 
+            src: 'dist/bower_components/angular/*', 
+            dest: 'bower_components/angular/' 
+          },
+          { 
+            src: 'dist/bower_components/angular-ui-router/release/*', 
+            dest: 'bower_components/angular-ui-router/release/' 
+          },
+          { 
+            src: 'dist/bower_components/bootstrap/dist/css/*', 
+            dest: 'bower_components/bootstrap/dist/css/' 
+          },
+          { 
+            src: 'dist/bower_components/jquery/*', 
+            dest: 'bower_components/jquery/' 
+          },
+          { 
+            src: 'dist/scripts/*', 
+            dest: 'scripts/' 
+          },
+          { 
+            src: 'dist/scripts/controllers/*', 
+            dest: 'scripts/controllers/' 
+          },
+          { 
+            src: 'dist/scripts/filters/*', 
+            dest: 'scripts/filters/' 
+          },
+          { 
+            src: 'dist/scripts/services/*', 
+            dest: 'scripts/services/' 
+          },          
+          { 
+            src: 'dist/styles/*', 
+            dest: 'styles/' 
+          },
+          { 
+            src: 'dist/views/*', 
+            dest: 'views/' 
+          }
+        ]
       }
     }
   });
