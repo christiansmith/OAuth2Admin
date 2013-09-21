@@ -4,11 +4,24 @@ angular.module('app.services')
 
   .factory('request', function ($q, $http, Session) {
 
+    /**
+     * Add HTTP Basic Authentication Header
+     */
+
+    function httpBasicAuthentication (config) {
+      if (!config.headers) { config.headers = {}; }
+      config.headers['Authorization'] = 'Basic ' + Session.authorization;      
+    }
+
+
+    /**
+     * Request
+     */
+
     function request(config) {
       var deferred = $q.defer();
 
-      if (!config.headers) { config.headers = {}; }
-      config.headers['Authorization'] = 'Basic ' + Session.authorization;
+      httpBasicAuthentication(config);
 
       function success(response) {
         console.log(config, response.data);
