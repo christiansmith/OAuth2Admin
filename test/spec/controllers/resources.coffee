@@ -5,7 +5,7 @@ describe 'ResourcesCtrl', ->
   {ResourcesCtrl,scope,resources} = {}
 
   
-  beforeEach module 'OAuth2Admin'
+  beforeEach module 'app.controllers'
 
 
   beforeEach inject ($injector) ->
@@ -20,5 +20,5 @@ describe 'ResourcesCtrl', ->
       resources: resources
 
 
-  it 'should have initialize resources', ->
+  it 'should have initial resources', ->
     expect(scope.resources).toBe resources

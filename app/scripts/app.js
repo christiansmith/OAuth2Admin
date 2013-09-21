@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('app.settings', [])
-  .value('host',   'https://oauth2server-9063.onmodulus.net')
-  //.value('host',   'http://localhost:3000')
-  .value('key',    '9ad9372bda1596f0158a')
-  .value('secret', 'ddd48de5d04f116551ca')
+  .value('host', 'https://oauth2server-9063.onmodulus.net')
 
-angular.module('OAuth2Admin', ['ui.router', 'app.services', 'app.settings'])
+
+angular.module('OAuth2Admin', ['ui.router', 'app.controllers', 'app.services'])
+
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
@@ -68,7 +67,12 @@ angular.module('OAuth2Admin', ['ui.router', 'app.services', 'app.settings'])
 
   })
 
-  .run(function ($rootScope, $state, $stateParams) {
+  .run(function ($rootScope, $state, $stateParams, Session) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    Session.host = 'https://oauth2server-9063.onmodulus.net/';
+    Session.login({ 
+      key: '9ad9372bda1596f0158a', 
+      secret: 'ddd48de5d04f116551ca' 
+    });
   });

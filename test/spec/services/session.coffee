@@ -35,6 +35,13 @@ describe 'Session', ->
       expect(Session.secret).toBe undefined
 
 
+  describe 'encodeCredentials', ->
+
+    it 'should Base64 encode the key and secret', ->
+      {key,secret} = credentials
+      expect(Session.encodeCredentials(key, secret)).toBe authorization
+
+
   describe 'login', ->
 
     describe 'with unreachable host', ->

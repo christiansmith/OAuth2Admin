@@ -3,21 +3,31 @@
 describe 'request', ->
 
 
-  {request,$httpBackend,host, key, secret, Base64} = {}
+  {url,request,authorization,headers,$httpBackend,Session,Base64} = {}
 
 
-  beforeEach module 'app.settings'
   beforeEach module 'app.services'
 
 
   beforeEach inject ($injector) ->
-    request      = $injector.get 'request'
-    $httpBackend = $injector.get '$httpBackend'
-    host         = $injector.get 'host'
-    key          = $injector.get 'key'
-    secret       = $injector.get 'secret'
-    Base64       = $injector.get 'Base64'
+    url                   = 'https://host/'
+    key                   = '123'
+    secret                = 'secret'
     
+    Session               = $injector.get 'Session'
+    Session.host          = url
+    Session.key           = key
+    Session.secret        = secret
+    Session.authorization = 
+    authorization         = Session.encodeCredentials(key, secret)
+
+    request               = $injector.get 'request'
+    $httpBackend          = $injector.get '$httpBackend'
+
+    headers = 
+      'Authorization': "Basic #{authorization}"
+      'Accept': 'application/json, text/plain, */*'
+      'X-Requested-With': 'XMLHttpRequest'
 
 
   afterEach ->
@@ -28,17 +38,9 @@ describe 'request', ->
   describe 'headers', ->
 
     it 'should include an encoded authorization header', ->
-      url          = 'https://localhost/'
-      credentials  = "Basic #{Base64.encode(key + ':' + secret)}"
-      
-      headers = 
-        'Authorization': credentials
-        'Accept': 'application/json, text/plain, */*'
-        'X-Requested-With': 'XMLHttpRequest'
-
-      $httpBackend.expectGET(host, headers).respond null
+      $httpBackend.expectGET(url, headers).respond null
       request({
         method: 'GET',
-        url: host
+        url: url
       })
       $httpBackend.flush()

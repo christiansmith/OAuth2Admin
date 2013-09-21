@@ -18,6 +18,15 @@ angular.module('app.services')
        */
 
       authenticated: false,
+
+
+      /**
+       * Encode credentials
+       */
+
+      encodeCredentials: function (key, secret) {
+        return Base64.encode(key + ':' + secret);
+      },
       
 
       /**
@@ -28,7 +37,7 @@ angular.module('app.services')
         var service = this
           , key = credentials.key
           , secret = credentials.secret
-          , authorization = Base64.encode(key + ':' + secret)
+          , authorization = this.encodeCredentials(key, secret)
           ;
 
         function success (response) {

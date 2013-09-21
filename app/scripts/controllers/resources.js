@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('OAuth2Admin')
+angular.module('app.controllers')
   .controller('ResourcesCtrl', function ($scope, resources) {
     $scope.resources = resources;
   });

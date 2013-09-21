@@ -5,7 +5,7 @@ describe 'ClientsCtrl', ->
   {ClientsCtrl,scope,clients} = {}
 
   
-  beforeEach module 'OAuth2Admin'
+  beforeEach module 'app.controllers'
 
 
   beforeEach inject ($injector) ->
@@ -20,5 +20,5 @@ describe 'ClientsCtrl', ->
       clients: clients
 
 
-  it 'should have initialize clients', ->
+  it 'should have initial clients', ->
     expect(scope.clients).toBe clients

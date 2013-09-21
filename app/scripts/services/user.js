@@ -2,7 +2,6 @@
 
 angular.module('app.services')
 
-
   .factory('User', function ($q, request, host) {
 
     var baseUrl = host + '/v1/users';

@@ -2,15 +2,13 @@
 
 angular.module('app.services')
 
-  .factory('request', function ($q, $http, Base64, key, secret) {
-       
-    var authorization = 'Basic ' + Base64.encode(key + ':' + secret);
+  .factory('request', function ($q, $http, Session) {
 
     function request(config) {
       var deferred = $q.defer();
 
       if (!config.headers) { config.headers = {}; }
-      config.headers['Authorization'] = authorization;
+      config.headers['Authorization'] = 'Basic ' + Session.authorization;
 
       function success(response) {
         console.log(config, response.data);
