@@ -9,6 +9,7 @@ angular.module('app.services')
      */
 
     function httpBasicAuthentication (config) {
+      if (!Session.authorization) { return; }
       if (!config.headers) { config.headers = {}; }
       config.headers['Authorization'] = 'Basic ' + Session.authorization;      
     }

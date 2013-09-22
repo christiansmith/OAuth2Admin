@@ -48,7 +48,7 @@ angular.module('app.services')
           // move key and secret into private variables?
         }
  
-        $http({
+        return $http({
           method:'POST', 
           url: this.host, 
           headers: { 

@@ -24,11 +24,6 @@ describe 'request', ->
     request               = $injector.get 'request'
     $httpBackend          = $injector.get '$httpBackend'
 
-    headers = 
-      'Authorization': "Basic #{authorization}"
-      'Accept': 'application/json, text/plain, */*'
-      'X-Requested-With': 'XMLHttpRequest'
-
 
   afterEach ->
     $httpBackend.verifyNoOutstandingExpectation()
@@ -37,10 +32,33 @@ describe 'request', ->
 
   describe 'headers', ->
 
-    it 'should include an encoded authorization header', ->
-      $httpBackend.expectGET(url, headers).respond null
-      request({
-        method: 'GET',
-        url: url
-      })
-      $httpBackend.flush()
+    describe 'with authenticated session', ->
+
+      beforeEach ->
+        headers = 
+          'Authorization': "Basic #{authorization}"
+          'Accept': 'application/json, text/plain, */*'
+          'X-Requested-With': 'XMLHttpRequest'
+
+      it 'should include an encoded authorization header', ->
+        $httpBackend.expectGET(url, headers).respond null
+        request({
+          method: 'GET'
+          url: url
+        })
+        $httpBackend.flush()
+
+
+    describe 'with unauthenticated session', ->
+
+      beforeEach ->      
+        Session.logout()
+        
+      it 'should not include an Authorization header', ->
+        fn = (headers) -> headers['Authorization'] is undefined
+        $httpBackend.expect('GET', url, null, fn).respond null
+        request({
+          method: 'GET'
+          url: url
+        })
+        $httpBackend.flush()        

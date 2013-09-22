@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4>Authenticate</h4>
+</div>
+
+<div class="modal-body">
+
+  <p>
+    <label for="">Server</label>
+    <input class="input input-block-level" 
+            type="text" 
+            ng-model="session.host" 
+            placeholder="Host">
+  </p>
+  <p>
+    <label for="">Credentials</label>
+    <input class="input input-block-level" 
+          type="password" 
+          ng-model="session.key" 
+          placeholder="Key">
+  </p>
+  <p>
+    <input class="input input-block-level" 
+          type="password" 
+          ng-model="session.secret" 
+          placeholder="Secret">
+  </p>
+</div>
+
+<div class="modal-footer">
+  <input type="submit" 
+          class="btn btn-primary"
+          ng-click="login()" 
+          value="Authenticate">
+</div>

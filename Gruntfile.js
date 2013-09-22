@@ -250,10 +250,12 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/bootstrap/dist/css/bootstrap.css',
-            'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+            'bower_components/bootstrap/docs/assets/css/bootstrap.css',
+            'bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css',
             'bower_components/jquery/jquery.js',
-            'bower_components/angular/angular.js',
+            'bower_components/angular-unstable/angular.js',
+            'bower_components/angular-bootstrap/ui-bootstrap.js',
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'scripts/**/*',
             'images/{,*/}*.{gif,webp}',
@@ -333,16 +335,20 @@ module.exports = function (grunt) {
             dest: 'index.html' 
           },
           { 
-            src: 'dist/bower_components/angular/*', 
-            dest: 'bower_components/angular/' 
+            src: 'dist/bower_components/angular-unstable/*', 
+            dest: 'bower_components/angular-unstable/' 
           },
+          { 
+            src: 'dist/bower_components/angular-bootstrap/*.js', 
+            dest: 'bower_components/angular-bootstrap/' 
+          },          
           { 
             src: 'dist/bower_components/angular-ui-router/release/*', 
             dest: 'bower_components/angular-ui-router/release/' 
           },
           { 
-            src: 'dist/bower_components/bootstrap/dist/css/*', 
-            dest: 'bower_components/bootstrap/dist/css/' 
+            src: 'dist/bower_components/bootstrap/docs/assets/css/*', 
+            dest: 'bower_components/bootstrap/docs/assets/css/' 
           },
           { 
             src: 'dist/bower_components/jquery/*', 
@@ -356,6 +362,10 @@ module.exports = function (grunt) {
             src: 'dist/scripts/controllers/*', 
             dest: 'scripts/controllers/' 
           },
+          { 
+            src: 'dist/scripts/interceptors/*', 
+            dest: 'scripts/interceptors/' 
+          },          
           { 
             src: 'dist/scripts/filters/*', 
             dest: 'scripts/filters/' 
