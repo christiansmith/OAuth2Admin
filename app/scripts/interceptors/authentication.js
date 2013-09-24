@@ -4,18 +4,9 @@ angular.module('app.interceptors', [])
 
   .factory('AuthenticationInterceptor', function ($q, $injector) {
 
-    var $modal, Session;
+    var $modal;
 
     return {
-
-      /**
-       * Handle unauthenticated session
-       */
-
-//      request: function (config) {
-//        return config;
-//      },
-
 
       /**
        * Handle 401 Response

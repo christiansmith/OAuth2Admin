@@ -56,7 +56,6 @@ describe 'Session', ->
         $httpBackend.expectPOST(Session.host, null, { 
           'Authorization': "Basic #{authorization}"
           'Accept': 'application/json, text/plain, */*' 
-          'X-Requested-With':'XMLHttpRequest'
         }).respond null
         Session.login(credentials)
         $httpBackend.flush()
@@ -83,8 +82,7 @@ describe 'Session', ->
     beforeEach ->
       $httpBackend.expectPOST(Session.host, null, { 
         'Authorization': "Basic #{authorization}"
-        'Accept': 'application/json, text/plain, */*' 
-        'X-Requested-With':'XMLHttpRequest'
+        'Accept': 'application/json, text/plain, */*'
       }).respond null
       Session.login(credentials)
       $httpBackend.flush()
@@ -109,7 +107,6 @@ describe 'Session', ->
       $httpBackend.expectPOST(Session.host, null, { 
         'Authorization': "Basic #{authorization}"
         'Accept': 'application/json, text/plain, */*' 
-        'X-Requested-With':'XMLHttpRequest'
       }).respond null
       Session.login(credentials)
       $httpBackend.flush()

@@ -38,7 +38,6 @@ describe 'request', ->
         headers = 
           'Authorization': "Basic #{authorization}"
           'Accept': 'application/json, text/plain, */*'
-          'X-Requested-With': 'XMLHttpRequest'
 
       it 'should include an encoded authorization header', ->
         $httpBackend.expectGET(url, headers).respond null

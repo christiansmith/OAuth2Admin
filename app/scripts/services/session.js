@@ -56,7 +56,7 @@ angular.module('app.services')
           }
         }).then(success);
       },
-      
+
 
       /**
        * Logout

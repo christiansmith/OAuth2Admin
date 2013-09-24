@@ -8,7 +8,7 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'app/bower_components/angular-unstable/angular.js',
-  'app/bower_components/angular-mocks/angular-mocks.js',
+  'app/bower_components/angular-mocks-unstable/angular-mocks.js',
   'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
   'app/bower_components/angular-ui-router/release/angular-ui-router.js',
   'app/scripts/*.js',
