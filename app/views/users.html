@@ -1,4 +1,4 @@
-<h1>Users</h1>
+<h3><i class="icon-user"></i> Accounts</h3>
 
 <table class="table table-condensed table-hover">
   <thead>
@@ -15,6 +15,9 @@
       <td>{{user.email}}</td>
       <td>{{user.created | date:'mediumDate'}}</td>
       <td>{{user.modified | date: 'mediumDate'}}</td>
+      <td>
+        <a ng-click="destroy(user)"><i class="icon-remove"></i></a> 
+      </td>
     </tr>
   </tbody>
 </table>

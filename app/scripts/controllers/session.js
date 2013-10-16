@@ -18,7 +18,7 @@ angular.module('app.controllers')
   })
 
 
-  .controller('AuthenticationCtrl', function ($scope, $modalInstance, Session) {
+  .controller('AuthenticationCtrl', function ($scope, $modalInstance, $state, Session) {
     
     $scope.session = Session;
     
@@ -31,6 +31,10 @@ angular.module('app.controllers')
 
       function success (response) {
         $modalInstance.dismiss('cancel');
+        console.log('$state', $state)
+        console.log('$state.current', $state.current)
+        console.log('$state.$current', $state.$current.toString())
+        $state.go('users')
       }
 
       function failure (fault) {

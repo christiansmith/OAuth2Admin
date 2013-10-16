@@ -25,6 +25,19 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+
+  var notFound = function (req, res) {
+    var fs = require('fs')
+      , path = require('path')
+
+    fs.readFile(path.join(yeomanConfig.app, 'index.html'), function (err, body) {
+      res.statusCode = 200;
+      res.setHeader('Content-Length', body.length);
+      res.end(body);                   
+    });
+  }
+
+
   try {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
   } catch (e) {}
@@ -79,7 +92,8 @@ module.exports = function (grunt) {
             return [
               lrSnippet,
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, yeomanConfig.app)
+              mountFolder(connect, yeomanConfig.app),
+              notFound
             ];
           }
         }
@@ -223,7 +237,7 @@ module.exports = function (grunt) {
         options: {
           //removeCommentsFromCDATA: true,
           // https://github.com/yeoman/grunt-usemin/issues/44
-          collapseWhitespace: true,
+          //collapseWhitespace: true,
           //collapseBooleanAttributes: true,
           //removeAttributeQuotes: true,
           //removeRedundantAttributes: true,
@@ -249,7 +263,6 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
             'bower_components/bootstrap/docs/assets/css/bootstrap.css',
             'bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css',
             'bower_components/jquery/jquery.js',
@@ -257,9 +270,8 @@ module.exports = function (grunt) {
             'bower_components/angular-bootstrap/ui-bootstrap.js',
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
-            'scripts/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/**/*'
+            'styles/fonts/*'
           ]
         }, {
           expand: true,
@@ -419,14 +431,13 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'ngmin',
-    'cssmin',
+    //'cssmin',
     'uglify',
     'rev',
     'usemin'
   ]);
 
   grunt.registerTask('default', [
-    'jshint',
     'test',
     'build'
   ]);

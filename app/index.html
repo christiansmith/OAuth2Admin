@@ -11,7 +11,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bower_components/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
     <link href="bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 
     <!-- Custom styles for this template -->
     <link href="styles/main.css" rel="stylesheet">
@@ -48,13 +51,13 @@
                 <a ui-sref="dashboard">Dashboard</a>
               </li>
               <li ng-class="{active: $state.includes('users')}">
-                <a ui-sref="users">Users</a>
-              </li>
-              <li ng-class="{active: $state.includes('clients')}">
-                <a ui-sref="clients">Clients</a>
+                <a ui-sref="users">Accounts</a>
               </li>
               <li ng-class="{active: $state.includes('resources')}">
-                <a ui-sref="resources">Resources</a>
+                <a ui-sref="resources">Services</a>
+              </li>
+              <li ng-class="{active: $state.includes('clients')}">
+                <a ui-sref="clients">Apps</a>
               </li>
               <li ng-class="{active: $state.includes('logs')}">
                 <a ui-sref="logs">Logs</a>
@@ -72,18 +75,13 @@
     </div>
 
     <!-- Application dependencies -->
-    <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular-unstable/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    
-
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    
+    <!-- build:js scripts/application.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/interceptors/authentication.js"></script>
-
     <script src="scripts/controllers/clients.js"></script>
     <script src="scripts/controllers/dashboard.js"></script>
     <script src="scripts/controllers/logs.js"></script>
@@ -92,7 +90,6 @@
     <script src="scripts/controllers/session.js"></script>
     <script src="scripts/controllers/users.js"></script>
     
-
     <script src="scripts/services/base64.js"></script>
     <script src="scripts/services/request.js"></script>
     <script src="scripts/services/session.js"></script>    
