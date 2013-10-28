@@ -265,7 +265,10 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'bower_components/bootstrap/docs/assets/css/bootstrap.css',
             'bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css',
-            'bower_components/jquery/jquery.js',
+            'bower_components/bootstrap/docs/assets/js/html5shiv.js',
+            'bower_components/bootstrap/docs/assets/ico/**/*',
+            'bower_components/font-awesome/css/*',
+            'bower_components/font-awesome/font/*',
             'bower_components/angular-unstable/angular.js',
             'bower_components/angular-bootstrap/ui-bootstrap.js',
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
@@ -363,8 +366,20 @@ module.exports = function (grunt) {
             dest: 'bower_components/bootstrap/docs/assets/css/' 
           },
           { 
-            src: 'dist/bower_components/jquery/*', 
-            dest: 'bower_components/jquery/' 
+            src: 'dist/bower_components/bootstrap/docs/assets/js/*', 
+            dest: 'bower_components/bootstrap/docs/assets/js/' 
+          },
+          { 
+            src: 'dist/bower_components/bootstrap/docs/assets/ico/*', 
+            dest: 'bower_components/bootstrap/docs/assets/ico/' 
+          },
+          { 
+            src: 'dist/bower_components/font-awesome/css/*', 
+            dest: 'bower_components/font-awesome/css/' 
+          },       
+          { 
+            src: 'dist/bower_components/font-awesome/font/*', 
+            dest: 'bower_components/font-awesome/font/' 
           },
           { 
             src: 'dist/scripts/*', 
@@ -432,7 +447,7 @@ module.exports = function (grunt) {
     'cdnify',
     'ngmin',
     //'cssmin',
-    'uglify',
+    //'uglify',
     'rev',
     'usemin'
   ]);
