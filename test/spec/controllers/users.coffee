@@ -2,10 +2,11 @@
 
 describe 'UsersCtrl', ->
 
-  {UsersCtrl,scope,users} = {}
+  {UsersCtrl,scope,users,host} = {}
 
-  
+  angular.module('app.services').value('host', 'https://whatever.net')
   beforeEach module 'app.controllers'
+  beforeEach module 'app.services'
 
 
   beforeEach inject ($injector) ->
@@ -13,6 +14,7 @@ describe 'UsersCtrl', ->
     $rootScope = $injector.get '$rootScope'
 
     users = []
+    
     scope = $rootScope.$new()
 
     UsersCtrl = $controller 'UsersCtrl',
